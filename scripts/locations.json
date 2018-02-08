@@ -1,0 +1,20 @@
+[   
+    {
+        "name": "Casa Loma",
+        "position": {
+            "lat": 43.678088, 
+            "lng": -79.409401
+        },
+        "description": "Insert description of Casa Loma here"
+    },
+
+    {
+        "name": "Royal Ontario Museum",
+        "position": {
+            "lat": 43.667676,
+            "lng": -79.394678
+        },
+        "description": "Insert description of ROM here"
+    }
+]
+    
