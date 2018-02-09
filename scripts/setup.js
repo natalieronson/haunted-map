@@ -162,16 +162,24 @@ mapApp.neighbourhood = $(".neighbourhood-list");
 mapApp.createViewOnClick = function() {
     mapApp.neighbourhood.on("click", "li", function () {
     let location = $(this).text();
+    $(".dropdown-button").text(location);
     mapApp.createNewView(location); 
     });
 }
 
 mapApp.events = function () {
     mapApp.createViewOnClick();
+    mapApp.submitForm();
+    mapApp.toggleDropdown(".dropdown-button", ".neighbourhood-list", 400);
+    mapApp.toggleDropdown(".contribute", ".form-area", 400);
+    mapApp.closeForm();
+    mapApp.closePopup();
 }
 
 mapApp.init = function() {
+    mapApp.hide(".popup");
     mapApp.events();
+    
 }
 
 $(function() {
@@ -182,17 +190,59 @@ $(function() {
 //User submission form (different js file)
     //Accept user input and send as email to me
     //Remove text from form once submitted
+mapApp.submitForm = function() {
+    $("form").on("submit", function (e) {
+        console.log("I was clicked!");
+        e.preventDefault();
+        $(".form-input").val("");
+        mapApp.show(".popup");
+        mapApp.hide(".form-area");
+    });
+}
 
-$("form").on("submit", function(e) {
-    console.log("I was clicked!");
-    e.preventDefault();
-    $(".form-input").val("");
-});
+mapApp.toggleDropdown = function (clickedButton, list, duration) {
+    $(clickedButton).on("click", function(){
+        $(list).slideToggle({
+            duration: duration
+        });
+    });
+}
+
+
+
+
 
 
 
 
 //Map styling
+
+
+mapApp.hide = function(hidden) {
+    $(hidden).hide();
+}
+
+mapApp.show = function(shown) {
+    $(shown).show();
+}
+
+//Close form
+mapApp.closeForm = function() {
+    $(".closeForm").on("click", function (e) {
+        $(".form-area").slideToggle({
+            duration: 400
+        });
+        console.log("clicked x");
+    });
+}
+
+//Close popup
+mapApp.closePopup = function() {
+    $(".closePopup").on("click", function () {
+        mapApp.hide(".popup");
+    });
+}
+
 
 
 

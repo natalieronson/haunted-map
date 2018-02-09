@@ -136,3 +136,29 @@ form {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column; }
+
+.form-area {
+  display: none; }
+
+ul {
+  list-style-type: none; }
+
+.dropdown {
+  position: relative;
+  display: inline-block; }
+
+.neighbourhood-list {
+  display: none;
+  position: absolute;
+  min-width: 150px;
+  z-index: 1; }
+
+.neighbourhood-list li {
+  display: block; }
+
+.form-area {
+  position: absolute;
+  bottom: 0; }
+
+.popup {
+  display: none; }

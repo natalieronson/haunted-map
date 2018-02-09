@@ -12,16 +12,29 @@
 
     <div id="map"></div>
 
-    <ul class="neighbourhood-list">
-        <li>East York</li>
-        <li>Scarborough</li>
-        <li>North York</li>
-        <li>Etobicoke</li>
-        <li>The Junction</li>
-    </ul>
+    <nav class="dropdown">
+        <button class="dropdown-button">Explore</button>
+        <button class="contribute">Contribute to the map</button>
+        <ul class="neighbourhood-list">
+            <li>East York</li>
+            <li>Scarborough</li>
+            <li>North York</li>
+            <li>Etobicoke</li>
+            <li>The Junction</li>
+        </ul>
+    </nav>
+
+
+    <div class="popup">
+        <p>Thanks for submitting a new location! </p>
+        <div class="closePopup">
+            <i class="fa fa-times" id="x-icon"></i>
+        </div>
+    </div>
+
 
         <div class="form-area">
-            <i class="fas fa-times"></i>
+            <div class="closeForm"><i class="fa fa-times" id="x-icon"></i></div>
             <form action="">
                 <input class="form-input" type="text" placeholder="Your name">
                 <input class="form-input" type="email" placeholder="Email address">
