@@ -1,0 +1,42 @@
+// 
+
+.container {
+    position: relative;
+}
+
+.toggle-container {
+    border: 1px solid green;
+    height: 200px;
+    width: 300px;
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    // z-index: 10;
+    opacity: 1;
+    display: none;
+}
+
+.marker-info {
+    display: none;
+    height: 200px;
+    width: 300px;
+    border: 1px solid white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 1;
+    color: white;
+    text-align: center;
+    background: rgba($color: #231e44, $alpha: 0.7);
+    padding: 20px;
+    // transition: opacity 0.5s ease-in;
+}
+
+// .to-front {
+//     z-index: 10;
+// }
+
+.marker-info-fade {
+    opacity: 1;
+}

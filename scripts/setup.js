@@ -36,7 +36,87 @@ function initMap(content) {
     //creating inital map
     let map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
-        center: myLatLng
+        center: myLatLng,
+        styles: [
+            { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+            { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+            { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+            {
+                featureType: 'administrative.locality',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#d59563' }]
+            },
+            {
+                featureType: 'poi',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#d59563' }]
+            },
+            {
+                featureType: 'poi.park',
+                elementType: 'geometry',
+                stylers: [{ color: '#263c3f' }]
+            },
+            {
+                featureType: 'poi.park',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#6b9a76' }]
+            },
+            {
+                featureType: 'road',
+                elementType: 'geometry',
+                stylers: [{ color: '#38414e' }]
+            },
+            {
+                featureType: 'road',
+                elementType: 'geometry.stroke',
+                stylers: [{ color: '#212a37' }]
+            },
+            {
+                featureType: 'road',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#9ca5b3' }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{ color: '#746855' }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'geometry.stroke',
+                stylers: [{ color: '#1f2835' }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#f3d19c' }]
+            },
+            {
+                featureType: 'transit',
+                elementType: 'geometry',
+                stylers: [{ color: '#2f3948' }]
+            },
+            {
+                featureType: 'transit.station',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#d59563' }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [{ color: '#17263c' }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#515c6d' }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'labels.text.stroke',
+                stylers: [{ color: '#17263c' }]
+            }
+        ]
     });
 
 
@@ -58,14 +138,33 @@ function initMap(content) {
             title: mapApp.data[i].name  
         });
 
+
         //create infowindow for marker
-        let infowindow = new google.maps.InfoWindow({
-            content: mapApp.data[i].description
-        });
+        // let infowindow = new google.maps.InfoWindow({
+        //     content: mapApp.data[i].description
+        // });
+
+        let content = mapApp.data[i].description;
 
         //open infowindow on click
-        marker.addListener("click", function () {
-            infowindow.open(map, marker);
+        // marker.addListener("click", function () {
+        //     // infowindow.open(map, marker);
+        //     console.log(marker.title);
+        //     // $(".marker-info").html(`<h2>${marker.title}</h2><br><p>${content}</p>`);
+        
+        //     // $(".toggle-container").addClass("marker-info-fade");
+        //     // $(".marker-info").addClass("marker-info-fade");
+          
+        // });
+        google.maps.event.addListener(marker, 'click', function(){
+            console.log("clicky click");
+            $(".marker-info").html(`<div class="closeDesc">
+                    <i class="fa fa-times" id="x-icon"></i>
+                </div><h2>${marker.title}</h2><br><p>${content}</p>`);
+            $(".toggle-container").show();
+            $(".marker-info").fadeIn();
+            
+            
         });
     }  
     
@@ -129,14 +228,103 @@ mapApp.createNewView = function(location) {
     //retrieve the coordinates of the neighbourhood
     let myLatLng = mapApp.getCoordinates(location);
 
-    //create a new map view
     let map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
-        center: myLatLng
+        zoom: 12,
+        center: myLatLng,
+        styles: [
+            { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+            { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+            { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+            {
+                featureType: 'administrative.locality',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#d59563' }]
+            },
+            {
+                featureType: 'poi',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#d59563' }]
+            },
+            {
+                featureType: 'poi.park',
+                elementType: 'geometry',
+                stylers: [{ color: '#263c3f' }]
+            },
+            {
+                featureType: 'poi.park',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#6b9a76' }]
+            },
+            {
+                featureType: 'road',
+                elementType: 'geometry',
+                stylers: [{ color: '#38414e' }]
+            },
+            {
+                featureType: 'road',
+                elementType: 'geometry.stroke',
+                stylers: [{ color: '#212a37' }]
+            },
+            {
+                featureType: 'road',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#9ca5b3' }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{ color: '#746855' }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'geometry.stroke',
+                stylers: [{ color: '#1f2835' }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#f3d19c' }]
+            },
+            {
+                featureType: 'transit',
+                elementType: 'geometry',
+                stylers: [{ color: '#2f3948' }]
+            },
+            {
+                featureType: 'transit.station',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#d59563' }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [{ color: '#17263c' }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#515c6d' }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'labels.text.stroke',
+                stylers: [{ color: '#17263c' }]
+            }
+        ]
     });
 
+
+    //import location object as markers to map
     for (let i = 0; i < mapApp.data.length; i++) {
-        
+        // mapApp.createMarker();
+        // let marker = new google.maps.Marker({
+        //     position: {
+        //         "lat": 43.678088,
+        //         "lng": -79.409401
+        //     },
+        //     map: map,
+        //     title: "Insert title here"
+        // });
         //create marker
         let marker = new google.maps.Marker({
             position: mapApp.data[i].position,
@@ -144,17 +332,39 @@ mapApp.createNewView = function(location) {
             title: mapApp.data[i].name
         });
 
+
         //create infowindow for marker
-        let infowindow = new google.maps.InfoWindow({
-            content: mapApp.data[i].description
-        });
+        // let infowindow = new google.maps.InfoWindow({
+        //     content: mapApp.data[i].description
+        // });
+
+        let content = mapApp.data[i].description;
 
         //open infowindow on click
-        marker.addListener("click", function () {
-            infowindow.open(map, marker);
+        // marker.addListener("click", function () {
+        //     // infowindow.open(map, marker);
+        //     console.log(marker.title);
+        //     // $(".marker-info").html(`<h2>${marker.title}</h2><br><p>${content}</p>`);
+
+        //     // $(".toggle-container").addClass("marker-info-fade");
+        //     // $(".marker-info").addClass("marker-info-fade");
+
+        // });
+        google.maps.event.addListener(marker, 'click', function () {
+            console.log("clicky click");
+            $(".marker-info").html(`<div class="closeDesc">
+                    <i class="fa fa-times" id="x-icon"></i>
+                </div><h2>${marker.title}</h2><br><p>${content}</p>`);
+            $(".toggle-container").show();
+            $(".marker-info").fadeIn();
+
+
         });
-    }  
+    }
+
 }
+
+
 
 
 mapApp.neighbourhood = $(".neighbourhood-list");
@@ -171,13 +381,34 @@ mapApp.events = function () {
     mapApp.createViewOnClick();
     mapApp.submitForm();
     mapApp.toggleDropdown(".dropdown-button", ".neighbourhood-list", 400);
-    mapApp.toggleDropdown(".contribute", ".form-area", 400);
-    mapApp.closeForm();
-    mapApp.closePopup();
+    mapApp.fadeIn(".contribute", ".form-area", 400);
+    mapApp.fadeOut("")
+
+    // mapApp.closeForm();
+    // mapApp.fadeOut = function() {
+//     $(".closeForm").on("click", function (e) {
+//         $(".form-area").fadeOut({
+//             duration: 400
+//         });
+//         console.log("clicked x");
+//     });
+// }
+    mapApp.fadeOut(".closeForm", ".form-area", 400);
+    mapApp.fadeOut(".closePopup", ".popup", 400);
+    mapApp.fadeOut(".closeDesc", ".toggle-container", 400);
+    mapApp.fadeOut(".closeDesc", "marker-info", 400);
+    $(".marker-info").on("click", ".closeDesc", function () {
+        console.log("close the popup!");
+        $(".marker-info").fadeOut();
+        $(".toggle-container").fadeOut();
+    });
+
+    // mapApp.closePopup();
+    mapApp.fadeIn(".marker-info");
 }
 
 mapApp.init = function() {
-    mapApp.hide(".popup");
+    // mapApp.hide(".popup");
     mapApp.events();
     
 }
@@ -226,15 +457,28 @@ mapApp.show = function(shown) {
     $(shown).show();
 }
 
-//Close form
-mapApp.closeForm = function() {
-    $(".closeForm").on("click", function (e) {
-        $(".form-area").slideToggle({
-            duration: 400
-        });
-        console.log("clicked x");
+//fade in
+mapApp.fadeIn = function (button, fade, duration) {
+    $(button).on("click", function(){
+        $(fade).fadeIn(duration);
     });
 }
+
+//Close form
+
+mapApp.fadeOut = function (button, fade, duration) {
+    $(button).on("click", function () {
+        $(fade).fadeOut(duration);
+    });
+}
+// mapApp.fadeOut = function() {
+//     $(".closeForm").on("click", function (e) {
+//         $(".form-area").fadeOut({
+//             duration: 400
+//         });
+//         console.log("clicked x");
+//     });
+// }
 
 //Close popup
 mapApp.closePopup = function() {
@@ -242,6 +486,8 @@ mapApp.closePopup = function() {
         mapApp.hide(".popup");
     });
 }
+
+
 
 
 
