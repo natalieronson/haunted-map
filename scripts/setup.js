@@ -2,9 +2,6 @@
 
 const mapApp = {};
 
-// mapApp.file = '../scripts/locations.json';
-
-// mapApp.data = JSON.parse($.getJSON({ 'url': mapApp.file, 'async': false }).responseText);
 mapApp.data = [
     {
         "name": "Royal Ontario Museum",
@@ -344,24 +341,9 @@ function initMap(content) {
 
        
 
-
-        //create infowindow for marker
-        // let infowindow = new google.maps.InfoWindow({
-        //     content: mapApp.data[i].description
-        // });
-
         let content = mapApp.data[i].description;
 
-        //open infowindow on click
-        // marker.addListener("click", function () {
-        //     // infowindow.open(map, marker);
-        //     console.log(marker.title);
-        //     // $(".marker-info").html(`<h2>${marker.title}</h2><br><p>${content}</p>`);
-        
-        //     // $(".toggle-container").addClass("marker-info-fade");
-        //     // $(".marker-info").addClass("marker-info-fade");
-          
-        // });
+       
         google.maps.event.addListener(marker, 'click', function(){
             console.log("clicky click");
             $(".marker-info").html(`<div class="closeDesc">
@@ -378,7 +360,7 @@ function initMap(content) {
 
 
 //Select by neighbourhood
-    //Adjust latitude and longitude of map/zoom
+
 
 mapApp.placeCoordinates = [
     {
@@ -515,16 +497,7 @@ mapApp.createNewView = function(location) {
 
     //import location object as markers to map
     for (let i = 0; i < mapApp.data.length; i++) {
-        // mapApp.createMarker();
-        // let marker = new google.maps.Marker({
-        //     position: {
-        //         "lat": 43.678088,
-        //         "lng": -79.409401
-        //     },
-        //     map: map,
-        //     title: "Insert title here"
-        // });
-        //create marker
+        
 
         let pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|ebedce");
 
@@ -537,29 +510,14 @@ mapApp.createNewView = function(location) {
 
 
 
-
-        //create infowindow for marker
-        // let infowindow = new google.maps.InfoWindow({
-        //     content: mapApp.data[i].description
-        // });
-
         let content = mapApp.data[i].description;
 
-        //open infowindow on click
-        // marker.addListener("click", function () {
-        //     // infowindow.open(map, marker);
-        //     console.log(marker.title);
-        //     // $(".marker-info").html(`<h2>${marker.title}</h2><br><p>${content}</p>`);
-
-        //     // $(".toggle-container").addClass("marker-info-fade");
-        //     // $(".marker-info").addClass("marker-info-fade");
-
-        // });
+        
         google.maps.event.addListener(marker, 'click', function () {
             console.log("clicky click");
             $(".marker-info").html(`<div class="closeDesc">
                     <i class="fa fa-times" id="x-icon"></i>
-                </div><h2>${marker.title}</h2><br><p>${content}</p>`);
+                </div><h2>${marker.title}</h2><hr><br><p>${content}</p>`);
             $(".toggle-container").show();
             $(".marker-info").fadeIn();
 
@@ -592,16 +550,7 @@ mapApp.events = function () {
     mapApp.fadeOut("")
     mapApp.flicker();
     mapApp.smoothScroll();
-
-    // mapApp.closeForm();
-    // mapApp.fadeOut = function() {
-//     $(".closeForm").on("click", function (e) {
-//         $(".form-area").fadeOut({
-//             duration: 400
-//         });
-//         console.log("clicked x");
-//     });
-// }
+    mapApp.toggleSidebar();
     mapApp.fadeOut(".closeForm", ".form-area", 400);
     mapApp.fadeOut(".closePopup", ".popup", 400);
     mapApp.fadeOut(".closeDesc", ".toggle-container", 400);
@@ -612,12 +561,12 @@ mapApp.events = function () {
         $(".toggle-container").fadeOut();
     });
 
-    // mapApp.closePopup();
+    
     mapApp.fadeIn(".marker-info");
 }
 
 mapApp.init = function() {
-    // mapApp.hide(".popup");
+    
     mapApp.events();
     
 }
@@ -627,9 +576,7 @@ $(function() {
 });
 
 
-//User submission form (different js file)
-    //Accept user input and send as email to me
-    //Remove text from form once submitted
+
 mapApp.submitForm = function() {
     $("form").on("submit", function (e) {
         console.log("I was clicked!");
@@ -706,14 +653,7 @@ mapApp.fadeOut = function (button, fade, duration) {
         $(fade).fadeOut(duration);
     });
 }
-// mapApp.fadeOut = function() {
-//     $(".closeForm").on("click", function (e) {
-//         $(".form-area").fadeOut({
-//             duration: 400
-//         });
-//         console.log("clicked x");
-//     });
-// }
+
 
 //Close popup
 mapApp.closePopup = function() {
@@ -722,12 +662,14 @@ mapApp.closePopup = function() {
     });
 }
 
-$(".expand-sidebar, .close-sidebar").on("click", function() {
-    console.log("clicked the expand sidebar");
-    $("aside").toggleClass("slide");
-    $(".expand-sidebar").toggleClass("hideArrow");
-    $(".close-sidebar").toggleClass("showArrow");
-});
+mapApp.toggleSidebar = function() {
+    $(".expand-sidebar, .close-sidebar").on("click", function() {
+        console.log("clicked the expand sidebar");
+        $("aside").toggleClass("slide");
+        $(".expand-sidebar").toggleClass("hideArrow");
+        $(".close-sidebar").toggleClass("showArrow");
+    });
+}
 
 
 
