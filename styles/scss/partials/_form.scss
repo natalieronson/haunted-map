@@ -18,6 +18,15 @@ form {
     }
 }
 
+.contribute {
+    padding: 20px;
+    border: 1px solid white;
+    color: white;
+    background: rgba(65, 33, 33, 0.5);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 .closeForm {
     color: white;
 }
@@ -38,7 +47,7 @@ form {
 
 .popup {
     border: 1px solid white;
-    background: rgba(18, 18, 37, 0.7);
+    background: rgba(65, 33, 33, 0.5);
     color: white;
     padding: 20px;
     position: absolute;

@@ -4,13 +4,14 @@
     position: relative;
 }
 
+
 .toggle-container {
-    border: 1px solid green;
+    // border: 1px solid green;
     height: 200px;
     width: 300px;
     position: absolute;
-    top: 30%;
-    left: 20%;
+    top: 20px;
+    left: 20px;
     // z-index: 10;
     opacity: 1;
     display: none;
@@ -18,20 +19,43 @@
 
 .marker-info {
     display: none;
-    height: 200px;
-    width: 300px;
+    display: flex;
+    flex-direction: column;
     border: 1px solid white;
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: -400px;
+    right: -400px;
+    margin: 0 auto;
+    font-size: 14px;
     z-index: 1000;
-    opacity: 1;
-    color: white;
+    // opacity: 1;
+    // color: rgb(235, 226, 226);
+    color: rgba(255, 255, 255, 0.8);
     text-align: center;
-    background: rgba($color: #231e44, $alpha: 0.7);
-    padding: 20px;
+    // background: rgba(36, 2, 2, 0.95);
+    background: rgba(15, 15, 15, 0.95);
+    padding: 80px;
+    width: 600px;
+    height: 80vh;
+    line-height: 1.5;
+    h2 {
+        padding-bottom: 0;
+        margin: 0;
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+    p {
+        padding: 0;
+        margin: 0;
+    }
+    .closeDesc {
+        font-size: 16px;
+    }
+    
     // transition: opacity 0.5s ease-in;
 }
+
+
 
 // .to-front {
 //     z-index: 10;
@@ -39,4 +63,27 @@
 
 .marker-info-fade {
     opacity: 1;
+}
+
+@media screen and (max-width: 800px) {
+    .marker-info {
+        width: 500px;
+        height: auto;
+        left: -150px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .marker-info {
+        padding: 20px;
+        left: -200px;
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .marker-info {
+        width: 350px;
+        left: -390px;
+    }
 }
