@@ -345,7 +345,6 @@ function initMap(content) {
 
        
         google.maps.event.addListener(marker, 'click', function(){
-            console.log("clicky click");
             $(".marker-info").html(`<div class="closeDesc">
                     <i class="fa fa-times" id="x-icon"></i>
                 </div><h2>${marker.title}</h2><hr><br><p>${content}</p>`);
@@ -400,7 +399,6 @@ mapApp.getCoordinates = function(place) {
     let loc = mapApp.placeCoordinates.find(function (element) {
         return element.name === place;
     });
-    // console.log(loc.coordinates)
     return loc.coordinates;
 }
 
@@ -514,7 +512,6 @@ mapApp.createNewView = function(location) {
 
         
         google.maps.event.addListener(marker, 'click', function () {
-            console.log("clicky click");
             $(".marker-info").html(`<div class="closeDesc">
                     <i class="fa fa-times" id="x-icon"></i>
                 </div><h2>${marker.title}</h2><hr><br><p>${content}</p>`);
@@ -556,7 +553,6 @@ mapApp.events = function () {
     mapApp.fadeOut(".closeDesc", ".toggle-container", 400);
     mapApp.fadeOut(".closeDesc", "marker-info", 400);
     $(".marker-info").on("click", ".closeDesc", function () {
-        console.log("close the popup!");
         $(".marker-info").fadeOut();
         $(".toggle-container").fadeOut();
     });
@@ -579,7 +575,6 @@ $(function() {
 
 mapApp.submitForm = function() {
     $("form").on("submit", function (e) {
-        console.log("I was clicked!");
         e.preventDefault();
         $(".form-input").val("");
         mapApp.show(".popup");
@@ -664,7 +659,6 @@ mapApp.closePopup = function() {
 
 mapApp.toggleSidebar = function() {
     $(".expand-sidebar, .close-sidebar").on("click", function() {
-        console.log("clicked the expand sidebar");
         $("aside").toggleClass("slide");
         $(".expand-sidebar").toggleClass("hideArrow");
         $(".close-sidebar").toggleClass("showArrow");
